@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package go_algorithm
 
 func longestPalindrome(s string) int {
 	if s == "" {
@@ -28,6 +26,8 @@ func longestPalindrome(s string) int {
 	}
 }
 
+
 // func main() {
 // 	fmt.Println(longestPalindrome("aba"))
 // }
+
