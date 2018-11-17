@@ -28,3 +28,13 @@ func Test_PostOrderTraverse(t *testing.T) {
 
 	binaryTree.PostOrderTraverse()
 }
+
+func Test_BinaryTreeBasedArray(t *testing.T) {
+
+	source := []int{2, 6, 3, 7, 9}
+	binaryTreeArray := CreateBinaryTree(source)
+	for i := range binaryTreeArray {
+		t.Log(binaryTreeArray[i])
+	}
+
+}
