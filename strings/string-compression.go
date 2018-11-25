@@ -1,9 +1,9 @@
-//package main
-// 
-//import (
-//    "fmt"
-//    "strconv"
-// )
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
 
 func compress(chars []byte) int {
 
@@ -35,13 +35,13 @@ func compress(chars []byte) int {
 	return cursor
 }
 
-//func main() {
-//
-//	//chars := []byte{'a', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c'}
-//	//chars := []byte{'a', 'b'}
-//	chars := []byte{'a', 'a', 'b', 'b', 'c', 'c', 'c'}
-//	length := compress(chars)
-//	fmt.Println(length)
-//	fmt.Println(chars[:length])
-//
-//}
+func main() {
+
+	//chars := []byte{'a', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c'}
+	//chars := []byte{'a', 'b'}
+	chars := []byte{'a', 'a', 'b', 'b', 'c', 'c', 'c'}
+	length := compress(chars)
+	fmt.Println(length)
+	fmt.Println(chars[:length])
+
+}

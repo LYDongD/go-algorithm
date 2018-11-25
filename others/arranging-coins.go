@@ -1,6 +1,6 @@
-//package main
+package main
 
-//import "fmt"
+import "fmt"
 
 func arrangeCoins(n int) int {
 	sum := 0
@@ -15,7 +15,7 @@ func arrangeCoins(n int) int {
 	}
 }
 
-//func main() {
-//	fmt.Println(arrangeCoins(5))
-//	fmt.Println(arrangeCoins(8))
-//}
+func main() {
+	fmt.Println(arrangeCoins(5))
+	fmt.Println(arrangeCoins(8))
+}
