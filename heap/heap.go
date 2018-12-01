@@ -49,26 +49,7 @@ func (heap *Heap) removeMax() {
 	swap(heap.a, 1, heap.count)
 	heap.count--
 
-	//comapre with left and right
-	for i := 1; i <= heap.count/2; {
-
-		maxIndex := i
-		if heap.a[i] < heap.a[i*2] {
-			maxIndex = i * 2
-		}
-
-		if i*2+1 <= heap.count && heap.a[maxIndex] < heap.a[i*2+1] {
-			maxIndex = i*2 + 1
-		}
-
-		if maxIndex == i {
-			break
-		}
-
-		swap(heap.a, i, maxIndex)
-		i = maxIndex
-	}
-
+	HeapifyUpToDown(heap.a, heap.count)
 }
 
 //swap two elements
@@ -76,6 +57,29 @@ func swap(a []int, i int, j int) {
 	tmp := a[i]
 	a[i] = a[j]
 	a[j] = tmp
+}
+
+func HeapifyUpToDown(a []int, count int) {
+
+	for i := 1; i <= count/2; {
+
+		maxIndex := i
+		if a[i] < a[i*2] {
+			maxIndex = i * 2
+		}
+
+		if i*2+1 <= count && a[maxIndex] < a[i*2+1] {
+			maxIndex = i*2 + 1
+		}
+
+		if maxIndex == i {
+			break
+		}
+
+		swap(a, i, maxIndex)
+		i = maxIndex
+	}
+
 }
 
 func main() {
