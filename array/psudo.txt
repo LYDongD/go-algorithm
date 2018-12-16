@@ -1,0 +1,11 @@
+#532
+
+define count as 0 
+given an index:
+    calculate differ with followed elements
+    if diff == k:
+        count++
+
+loop index from 0 to the last index - 1
+
+
