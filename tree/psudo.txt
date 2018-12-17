@@ -1,0 +1,14 @@
+#538
+
+loop tree node:
+    if node is root, which has no parent child:
+        calculate it's sum of right tree
+    if node is left child,
+        calculate it's parent sum and it's right tree sum
+    if node is right child,
+        calculate it's right tree sum
+
+    replace node num with new sum
+
+
+
