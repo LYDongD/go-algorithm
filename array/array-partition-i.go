@@ -18,7 +18,27 @@ func arrayPairSum(nums []int) int {
 }
 
 func sort(nums []int) {
-	quickSort(nums, 0, len(nums)-1)
+	//quickSort(nums, 0, len(nums)-1)
+	bucketSort(nums)
+}
+
+func bucketSort(nums []int) {
+	const base = 10000
+	const maxNums = 10000
+	buckets := make([]int, base+maxNums+1)
+
+	for _, num := range nums {
+		buckets[base+num]++
+	}
+
+	i := 0
+	for index, num := range buckets {
+		for num > 0 {
+			nums[i] = index - base
+			i++
+			num--
+		}
+	}
 }
 
 func quickSort(nums []int, start int, end int) {
@@ -52,5 +72,7 @@ func swap(nums []int, i int, j int) {
 
 func main() {
 	nums := []int{1, 4, 3, 2, 7, 9}
+	bucketSort(nums)
+	fmt.Println(nums)
 	fmt.Println(arrayPairSum(nums))
 }
