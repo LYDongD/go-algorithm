@@ -11,40 +11,27 @@ import "fmt"
  * }
  */
 func findTilt(root *TreeNode) int {
-	return findTiltRecursively(root, 0)
-}
-
-func findTiltRecursively(root *TreeNode, tilt int) int {
-	if root == nil {
-		return tilt
-	}
-
-	tilt += calculateTilt(root)
-	tilt = findTiltRecursively(root.Left, tilt)
-	tilt = findTiltRecursively(root.Right, tilt)
-
+	_, tilt := findSumAndTilt(root)
 	return tilt
 }
 
-func calculateTilt(node *TreeNode) int {
-	diff := calSum(node.Left, 0) - calSum(node.Right, 0)
-	if diff > 0 {
-		return diff
-	} else {
-		return -diff
+func findSumAndTilt(root *TreeNode) (sum, tilt int) {
+	if root == nil {
+		return 0, 0
 	}
+
+	ls, lt := findSumAndTilt(root.Left)
+	rs, rt := findSumAndTilt(root.Right)
+	return ls + rs + root.Val, lt + rt + abs(ls, rs)
 }
 
-func calSum(node *TreeNode, sum int) int {
-	if node == nil {
-		return sum
+func abs(a, b int) int {
+	result := a - b
+	if result < 0 {
+		result = -result
 	}
 
-	sum += node.Val
-	sum = calSum(node.Left, sum)
-	sum = calSum(node.Right, sum)
-
-	return sum
+	return result
 }
 
 type TreeNode struct {
