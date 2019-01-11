@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -37,7 +37,7 @@ func nextGreaterElement(findNums []int, nums []int) []int {
 	return result
 }
 
-func main() {
+func array() {
 
 	findNums := []int{2, 4}
 	nums := []int{1, 2, 3, 4}

@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -38,7 +38,7 @@ func walkMatrix(nums [][]int, s chan int) {
 	}
 }
 
-func main() {
+func array() {
 
 	nums := [][]int{{1, 2}, {3, 4}}
 	nums2 := [][]int{{1, 2}, {3, 4}, {5, 6}}

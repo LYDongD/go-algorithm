@@ -1,4 +1,5 @@
-//package main
+package array
+
 //
 //import (
 //	"fmt"
@@ -52,7 +53,7 @@ func sideLength(grid [][]int, row int, column int) int {
 	return sideLength
 }
 
-//func main() {
+//func array() {
 //	grid := [][]int{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}}
 //	fmt.Println(islandPerimeter(grid))
 //}

@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 import "strconv"
@@ -39,7 +39,7 @@ func tree2str(t *TreeNode) string {
 	return currentVal + "(" + tree2str(t.Left) + ")" + "(" + tree2str(t.Right) + ")"
 }
 
-func main() {
+func array() {
 	root := &TreeNode{Val: 1}
 	root.Left = &TreeNode{Val: 2}
 	root.Right = &TreeNode{Val: 3}

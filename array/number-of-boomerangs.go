@@ -1,4 +1,4 @@
-package main
+package array
 
 import (
 	"fmt"
@@ -37,7 +37,7 @@ func distant(point1 []int, point2 []int) int {
 	return int(xDistinct + yDistinct)
 }
 
-func main() {
+func array() {
 
 	point1 := []int{1, 0}
 	point2 := []int{0, 0}

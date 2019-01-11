@@ -1,4 +1,5 @@
-//package main
+package array
+
 //
 //import (
 //	"fmt"
@@ -30,7 +31,7 @@ func findDisappearedNumbers(nums []int) []int {
 
 }
 
-//func main() {
+//func array() {
 //
 //	nums := []int{4, 3, 2, 7, 8, 2, 3, 1}
 //	fmt.Println(findDisappearedNumbers(nums))

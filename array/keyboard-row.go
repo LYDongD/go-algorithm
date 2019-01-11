@@ -1,4 +1,4 @@
-package main
+package array
 
 import (
 	"fmt"
@@ -51,7 +51,7 @@ func configureRowMap(rowMap map[rune]int, rowStr string, row int) {
 	}
 }
 
-func main() {
+func array() {
 
 	words := []string{"Hello", "Alaska", "Dad", "Peace"}
 

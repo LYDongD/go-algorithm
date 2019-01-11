@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -29,7 +29,7 @@ func findLHS(nums []int) int {
 	return maxCount
 }
 
-func main() {
+func array() {
 	nums := []int{1, 3, 2, 2, 5, 2, 3, 7}
 	nums2 := []int{1, 2, 2, 1}
 	fmt.Println(findLHS(nums2))

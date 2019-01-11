@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -27,7 +27,7 @@ func findMaxConsecutiveOnes(nums []int) int {
 	return max
 }
 
-func main() {
+func array() {
 
 	nums1 := []int{1, 1, 0, 1, 1, 1}
 	nums2 := []int{1, 0, 1, 1, 0, 1}

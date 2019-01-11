@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -22,7 +22,7 @@ func findSumAndMin(nums []int) (sum int, min int) {
 	return sum, min
 }
 
-func main() {
+func array() {
 
 	nums := []int{1, 2, 3}
 	fmt.Println(findSumAndMin(nums))

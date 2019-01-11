@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -28,7 +28,7 @@ func findIntersection(ops [][]int) (int, int) {
 	return minRow, minCol
 }
 
-func main() {
+func array() {
 	operations := [][]int{{2, 2}, {3, 3}}
 	minRow, minCol := findIntersection(operations)
 	fmt.Println(minRow, minCol)

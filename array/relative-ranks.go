@@ -1,4 +1,4 @@
-package main
+package array
 
 import (
 	"fmt"
@@ -83,7 +83,7 @@ func generateRankedMap(sortedNums []int) map[int]int {
 	return rankedMap
 }
 
-func main() {
+func array() {
 
 	nums := []int{8, 1, 5, 2, 3}
 	//sortedNums := sortNums(nums)

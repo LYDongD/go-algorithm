@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -38,7 +38,7 @@ func distance(a int, b int) int {
 	return result
 }
 
-func main() {
+func array() {
 	houses := []int{1, 2, 3, 4}
 	heaters := []int{1, 4}
 	fmt.Println(findRadius(houses, heaters))

@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -37,7 +37,7 @@ func configMap(list []string) map[string]int {
 	return result
 }
 
-func main() {
+func array() {
 	list1 := []string{"Shogun", "Tapioca Express", "Burger King", "KFC"}
 	list2 := []string{"Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"}
 	list3 := []string{"KFC", "Shogun", "Burger King"}

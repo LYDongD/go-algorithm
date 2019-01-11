@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -23,7 +23,7 @@ func distributeCandies(candies []int) int {
 	}
 }
 
-func main() {
+func array() {
 	candies := []int{1, 1, 2, 2, 3, 3}
 	candies2 := []int{1, 1, 2, 3}
 	fmt.Println(distributeCandies(candies))

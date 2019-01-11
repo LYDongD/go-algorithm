@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -67,7 +67,7 @@ func swap(nums []int, a int, b int) {
 	nums[a], nums[b] = nums[b], nums[a]
 }
 
-func main() {
+func array() {
 	nums := []int{2, 6, 4, 8, 10, 9, 15}
 	nums2 := []int{1, 2, 3, 4}
 	nums3 := []int{2, 1}

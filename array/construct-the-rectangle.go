@@ -1,4 +1,4 @@
-package main
+package array
 
 import (
 	"fmt"
@@ -29,7 +29,7 @@ func constructRectangle(area int) []int {
 
 }
 
-func main() {
+func array() {
 
 	fmt.Println(constructRectangle(4))
 	fmt.Println(constructRectangle(30))

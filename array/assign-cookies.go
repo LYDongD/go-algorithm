@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -38,7 +38,7 @@ func findMinSizeCookie(g int, s []int) (int, int) {
 	return min, minIndex
 }
 
-func main() {
+func array() {
 
 	s := []int{1, 1}
 	g := []int{1, 2, 3}

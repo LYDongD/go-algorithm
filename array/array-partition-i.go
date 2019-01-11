@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -70,7 +70,7 @@ func swap(nums []int, i int, j int) {
 	nums[i], nums[j] = nums[j], nums[i]
 }
 
-func main() {
+func array() {
 	nums := []int{1, 4, 3, 2, 7, 9}
 	bucketSort(nums)
 	fmt.Println(nums)
