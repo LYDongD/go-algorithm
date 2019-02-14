@@ -4,53 +4,32 @@ import "fmt"
 
 func minCostClimbingStairs(cost []int) int {
 
-    n := len(cost)
-    if n == 0 {
-	return 0
-    }
+	n := len(cost)
+	if n == 0 {
+		return 0
+	}
 
-    minCostCache := make(map[int]int)
-    cost1 := minCost(n-1, cost, minCostCache)
-    cost2 := minCost(n-2, cost, minCostCache)
-    if cost1 < cost2 {
-	return cost1
-    }
+	dp := make([]int, n)
+	dp[0] = cost[0]
+	dp[1] = cost[1]
+	for i := 2; i < n; i++ {
+		dp[i] = min(dp[i-1]+cost[i], dp[i-2]+cost[i])
+	}
 
-    return cost2
+	return min(dp[n-2], dp[n-1])
 }
 
-func minCost(n int, cost []int, cache map[int]int) int {
-    if n <= 1 {
-	return cost[n]
-    }
+func min(a int, b int) int {
+	if a <= b {
+		return a
+	}
 
-    var cost1 int
-    if cache[n-1] > 0 {
-	cost1 = cost[n] + cache[n-1]
-    }else {
-	cost1 = cost[n] + minCost(n-1, cost, cache)
-    }
-
-    var cost2 int
-    if cache[n-2] > 0 {
-	cost2 = cost[n] + cache[n-2] 
-    }else {
-	cost2 = cost[n] + minCost(n-2, cost, cache)
-    }
-
-    if cost1 < cost2 {
-	cache[n] = cost1
-	return cost1
-    }
-
-    cache[n] = cost2
-    return cost2
-} 
+	return b
+}
 
 func main() {
 
-    fmt.Println(minCostClimbingStairs([]int{10, 15, 20}))
-    fmt.Println(minCostClimbingStairs([]int{1, 100, 1, 1, 1, 100, 1, 1, 100, 1}))
-
+	fmt.Println(minCostClimbingStairs([]int{10, 15, 20}))
+	fmt.Println(minCostClimbingStairs([]int{1, 100, 1, 1, 1, 100, 1, 1, 100, 1}))
 
 }
