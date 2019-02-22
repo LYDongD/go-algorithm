@@ -4,24 +4,25 @@ import "fmt"
 
 func letterCasePermutation(S string) []string {
 	result := []string{}
-	return permutation(S, 0, "", result)
+	chars := make([]rune, len(S))
+	return permutation(S, 0, chars, result)
 }
 
-func permutation(S string, index int, currentStr string, result []string) []string {
+func permutation(S string, index int, chars []rune, result []string) []string {
 	if index == len(S) {
-		result = append(result, currentStr)
-		return result
+	    return append(result, string(chars))
 	}
 
 	currentChar := rune(S[index])
 	if !isCharacter(currentChar) {
-		currentStr = currentStr + string(currentChar)
-		result = permutation(S, index+1, currentStr, result)
+		chars[index] = currentChar
+		result = permutation(S, index+1, chars, result)
 	}else {
-	    result = permutation(S, index+1, currentStr+string(toLower(currentChar)), result)
-	    result = permutation(S, index+1, currentStr+string(toUpper(currentChar)), result)
+	    chars[index] = toLower(currentChar)
+	    result = permutation(S, index+1, chars, result)
+	    chars[index] = toUpper(currentChar)
+	    result = permutation(S, index+1, chars, result)
 	}
-
 
 	return result
 }
