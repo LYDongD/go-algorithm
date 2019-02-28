@@ -18,24 +18,28 @@ func rotatedDigits(N int) int {
 }
 
 func isGood(num int) bool {
+
+	rotateDifferFlag := false
 	for num > 0 {
 		digit := num % 10
-		if digit == 1 || digit == 0 {
+		if digit == 1 || digit == 0 || digit == 8 {
 			num = num / 10
 			continue
 		}
 
 		if digit == 2 || digit == 5 || digit == 6 || digit == 9 {
-			return true
+			num = num / 10
+			rotateDifferFlag = true
+			continue
 		}
 
 		return false
 	}
 
-	return false
+	return rotateDifferFlag
 }
 
 func main() {
-	fmt.Println(rotatedDigits(10))
-	fmt.Println(rotatedDigits(10))
+	//fmt.Println(rotatedDigits(10))
+	fmt.Println(rotatedDigits(857))
 }
