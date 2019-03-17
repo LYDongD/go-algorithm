@@ -17,10 +17,10 @@ func nextGreatestLetter(letters []byte, target byte) byte {
 	end := len(letters)
 	for start < end {
 		middle := start + (end-start)/2
-		if letters[middle] > target {
-			end = middle
-		} else {
+		if letters[middle] <= target {
 			start = middle + 1
+		} else {
+			end = middle
 		}
 	}
 
