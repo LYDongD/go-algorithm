@@ -12,21 +12,21 @@ func combinationSum(candidates []int, target int) [][]int {
 }
 
 func backtrace(candidates []int, target, sum int, combination []int, result [][]int) [][]int {
+
     if sum == target {
 	result = append(result, combination)
 	return result
     }
 
-    if sum > target {
-	return result
-    }
-
     for _, candidate := range candidates {
-	if combination[len(combination) - 1] > candidate {
+	if len(combination) > 0 && combination[len(combination) - 1] > candidate {
 	    continue
 	}
 
-	result = backtrace(candidates, target, sum + candidate, append(combination, candidate), result)
+	if sum + candidate < target {
+	    result = backtrace(candidates, target, sum + candidate, append(combination, candidate), result)
+	}
+
     }
 
     return result
@@ -35,4 +35,6 @@ func backtrace(candidates []int, target, sum int, combination []int, result [][]
 func main() {
     fmt.Println(combinationSum([]int{2,3,6,7}, 7))
     fmt.Println(combinationSum([]int{2,3,5}, 8))
+    fmt.Println(combinationSum([]int{7,3,2}, 18))
 }
+

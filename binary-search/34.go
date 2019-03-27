@@ -8,14 +8,6 @@ func searchRange(nums []int, target int) []int {
 	return result
     }
 
-    if len(nums) == 1 {
-	if nums[0] == target {
-	    return []int{0,0}
-	}
-
-	return result
-    }
-
     //find min index target
     start, end := 0, len(nums) - 1
     for start < end {
