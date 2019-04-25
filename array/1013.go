@@ -34,11 +34,8 @@ func canThreePartsEqualSum(A []int) bool {
 		    if partTreeSum == partSum {
 			return true
 		    }
-
-		    partTwoSum = 0
 		}
 	    }
-	    partOneSum = 0
 	}
     }
 
