@@ -1,51 +1,51 @@
 package main
 
 import "fmt"
-import "strconv"
 
 func numDecodings(s string) int {
-	if len(s) == 0 {
+	if len(s) == 0 || s[0] == '0' {
 		return 0
 	}
 
-	charDic := []rune{' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
-		'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-		'Y', 'Z'}
+	if len(s) == 1 {
+		return 1
+	}
 
-	duplicatedDic := make(map[string]int)
-	return backtrace(charDic, s, "", duplicatedDic, 0)
+	dp := make([]int, len(s)+1)
+
+	//empty string -> 1 way to decode
+	dp[0] = 1
+	if s[0] == '0' {
+		dp[1] = 0
+	} else {
+		dp[1] = 1
+	}
+
+	//handle from the 2nd char
+	for i := 1; i < len(s); i++ {
+		if !isSingleValid(s[i]) && !isValid(s[i-1], s[i]) {
+			return 0
+		}
+
+		if isSingleValid(s[i]) {
+			dp[i+1] += dp[i]
+		}
+
+		if isValid(s[i-1], s[i]) {
+			dp[i+1] += dp[i-1]
+		}
+	}
+
+	return dp[len(s)]
 }
 
-func backtrace(charDic []rune, left string, selected string, duplicatedDic map[string]int, count int) int {
-	if len(left) == 0 {
-		fmt.Println("count: ", count, "selected: ", selected)
-		if duplicatedDic[selected] == 0 {
-			duplicatedDic[selected]++
-			return count + 1
-		} else {
-			return count
-		}
-	}
+func isSingleValid(a byte) bool {
+	return a >= '1' && a <= '9'
+}
 
-	//select 1
-	first, err := strconv.Atoi(left[0:1])
-	if err == nil && first >= 1 && first <= 26 {
-		count = backtrace(charDic, left[1:], selected+string(charDic[first]), duplicatedDic, count)
-	}
-
-	//select 2
-	if len(left) >= 2 && left[0:1] != "0" {
-		double, err1 := strconv.Atoi(left[0:2])
-		if double >= 1 && double <= 26 {
-			fmt.Println("select 2", selected+string(charDic[double]))
-			if err1 == nil {
-				count = backtrace(charDic, left[2:], selected+string(charDic[double]), duplicatedDic, count)
-			}
-
-		}
-	}
-
-	return count
+func isValid(a byte, b byte) bool {
+	s := (a-'0')*10 + b - '0'
+	return s >= 1 && s <= 26
 }
 
 func main() {
