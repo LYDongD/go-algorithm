@@ -19,10 +19,10 @@ func sortedListToBST(head *ListNode) *TreeNode {
 		return nil
 	}
 
-	//1 transtate link to array
+	// transtate link to array
 	array := translateToArray(head)
 
-	//2 build tree recursively
+	// build tree recursively
 	return buildBST(array, 0, len(array)-1)
 }
 
@@ -50,7 +50,23 @@ func buildBST(array []int, start, end int) *TreeNode {
 	return node
 }
 
+func constructLink(array []int) *ListNode {
+
+	root := &ListNode{Val: array[0]}
+	cursor := root
+	for i := 1; i < len(array); i++ {
+		cursor.Next = &ListNode{Val: array[i]}
+		cursor = cursor.Next
+	}
+
+	return root
+}
+
 func main() {
 
-	fmt.Println("vim-go")
+	//construct a link
+	head := constructLink([]int{-10, -3, 0, 5, 9})
+
+	root := sortedListToBST(head)
+	fmt.Println(root, root.Left, root.Right)
 }
