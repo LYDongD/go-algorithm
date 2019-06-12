@@ -28,15 +28,16 @@ func flatternRecursively(node *TreeNode) *TreeNode {
 
     if tail != nil {
 	tail.Right = node.Right
-	tail.Left = nil
     }
 
     if node.Right != nil {
 	tail = flatternRecursively(node.Right)
     }
 
-    node.Right = node.Left
-    node.Left = nil
+     if node.Left != nil {
+        node.Right = node.Left
+        node.Left = nil
+    }
 
     return tail
 }
