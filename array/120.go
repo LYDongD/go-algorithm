@@ -2,31 +2,38 @@ package main
 
 import "fmt"
 
-const INT_MAX = int(^uint(0) >> 1)
+var minSum int
 
 func minimumTotal(triangle [][]int) int {
-    if len(triangle) == 0 || len(triangle[0]) == 0 {
-	return 0
-    }
-
-    rowMin := INT_MAX
-    pathSum := 0
-    for r := 0; r < len(triangle); r++ {
-	for c := 0; c < len(triangle[r]); c++ {
-	    if triangle[r][c] < rowMin {
-		rowMin = triangle[r][c]
-	    }
+	if len(triangle) == 0 || len(triangle[0]) == 0 {
+		return 0
 	}
 
-	if rowMin < INT_MAX {
-	    pathSum += rowMin
-	    rowMin = INT_MAX
+	//dp from bottom to up by layer, left -> right at layer
+	dp := make([]int, len(triangle))
+	lastRow := len(triangle) - 1
+	for i := 0; i < len(triangle[lastRow]); i++ {
+		dp[i] = triangle[lastRow][i]
 	}
-    }
 
-    return pathSum
+	for row := len(triangle) - 2; row >= 0; row-- {
+		for col := 0; col < len(triangle[row]); col++ {
+			dp[col] = min(dp[col], dp[col+1]) + triangle[row][col]
+		}
+	}
+
+	return dp[0]
+
+}
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+
+	return b
 }
 
 func main() {
-    fmt.Println(minimumTotal([][]int{{2},{3,4},{6,5,7},{4,1,8,3}}))
+	fmt.Println(minimumTotal([][]int{{2}, {3, 4}, {6, 5, 7}, {4, 1, 8, 3}}))
 }
