@@ -1,4 +1,7 @@
-
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 public class OneThreeThree{
     
@@ -19,22 +22,28 @@ public class OneThreeThree{
 	}
 
 	Map<Integer, Node> copied = new HashMap<>();
-	clone(node, copied);
-	return node;
+	return clone(node, copied);
     }
 
-    private void clone(Node node, Map<Integer, Node> copied) {
+    private Node clone(Node node, Map<Integer, Node> copied) {
 	Node cloneNode = new Node();
 	cloneNode.val = node.val;
 	copied.put(node.val, cloneNode);
 	List<Node> cloneNeightbors = new ArrayList<>();
-	for (i := 0;  i < node.neighbors.size(); i++) {
-	   Node neightborNode = node.neighbors[i];
+	for (int i = 0;  i < node.neighbors.size(); i++) {
+	   Node neightborNode = node.neighbors.get(i);
 	   if (copied.get(neightborNode.val) != null) {
 		cloneNeightbors.add(copied.get(neightborNode.val));
 	   }else {
 		cloneNeightbors.add(clone(neightborNode, copied));
 	   }
 	}
+
+	return cloneNode;
+    }
+
+
+    public static void main(String[] args) {
+	System.out.println("haha");
     }
 }
