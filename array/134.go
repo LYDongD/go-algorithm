@@ -7,34 +7,21 @@ func canCompleteCircuit(gas []int, cost []int) int {
 		return -1
 	}
 
-	//candidate from 0 -> len(cost) - 1
-	result := -1
-	for start := 0; start < len(cost); start++ {
-
-		leftGas := 0
-		hasFound := true
-		steps := 0
-		next := start
-		for steps < len(cost) {
-			leftGas = leftGas + gas[next] - cost[next]
-			if leftGas < 0 {
-				hasFound = false
-				break
-			}
-			steps++
-			next++
-			if next > len(cost)-1 {
-				next = 0
-			}
-		}
-
-		if hasFound {
-			result = start
-			break
+	tank, current, start := 0, 0, 0
+	for i := 0; i < len(gas); i++ {
+		tank += gas[i] - cost[i]
+		current += gas[i] - cost[i]
+		if current < 0 {
+			start = i + 1
+			current = 0
 		}
 	}
 
-	return result
+	if tank < 0 {
+		return -1
+	}
+
+	return start
 
 }
 
