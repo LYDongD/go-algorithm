@@ -1,55 +1,46 @@
-package link
+package link;
+import java.util.*;
 
 public class OneThreeEight {
-    class static Node {
-	public int val;
-	public Node next;
-	public Node random;
+    private static class Node {
+        public int val;
+        public Node next;
+        public Node random;
 
-	public Node() {
-	}
+        public Node() {
+        }
 
-	public Node(int _val, Node _next, Node _random) {
-	    val = _val;
-	    next = _next;
-	    random = _random;
-	}
+        public Node(int _val, Node _next, Node _random) {
+            val = _val;
+            next = _next;
+            random = _random;
+        }
     }
 
     public Node copyRandomList(Node head) {
-	if (head == null) {
-	    return null;
-	}
+        if (head == null) {
+            return null;
+        }
 
-	Map<Integer, Node> copiedDic = new HashMap<>();
+        Map<Node, Node> copiedDic = new HashMap<>();
+        Node node = head;
+        while(node != null) {
+            copiedDic.put(node, new Node(node.val, null, null));
+            node = node.next;
+        }
 
-	return deepCopy(head, copiedDic)
+        node = head;
+        while(node != null) {
+            copiedDic.get(node).next = copiedDic.get(node.next);
+            copiedDic.get(node).random = copiedDic.get(node.random);
+            node = node.next;
+        }
+
+        return copiedDic.get(head);
     }
 
-    private Node deepCopy(Node node, Map copiedDic) {
-	if (null == node) {
-	    return null;
-	}
 
-	Node copiedNode = new Node();
-	copiedDic.put(copiedNode.val, copiedNode);
-
-	if (copiedDic.get(node.next.val) != null) {
-	    copiedNode.next = opiedDic.get(node.next.val);
-	}else {
-	    copiedNode.next = deepCopy(node.next, copiedDic);
-	}
-
-	if (copiedDic.get(node.random.val) != null) {
-	    copiedNode.random = copiedDic.get(node.random.val);	
-	}else {
-	    copiedNode.random = deepCopy(node.random, copiedDic);
-	}
-
-	return node;
-    }
-
-    public static main() {
-	System.out.println("haha");
+    public static void main(String[] args) {
+	    System.out.println("haha");
     }
 }
