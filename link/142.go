@@ -3,40 +3,38 @@ package main
 import "fmt"
 
 type ListNode struct {
-	Val  int
-	Next *ListNode
+    Val  int
+    Next *ListNode
 }
 
 func detectCycle(head *ListNode) *ListNode {
 
-	if head == nil {
-		return nil
-	}
-
-	start := head
-	for {
-		slow, fast := start, start.Next
-		if fast == slow {
-			return start
-		}
-
-		for fast != slow {
-
-			if fast == nil || fast.Next == nil || fast.Next.Next == nil {
-				return nil
-			}
-
-			if fast == start || fast.Next == start {
-				return start
-			}
-
-			fast = fast.Next.Next
-			slow = slow.Next
-		}
-		start = start.Next
-	}
-
+    if head == nil {
 	return nil
+    }
+
+    //fast-slow pointer to find the meet node
+    slow, fast := head, head
+
+    for {
+	if fast == nil || fast.Next == nil {
+	    return nil
+	}
+	slow = slow.Next
+	fast = fast.Next.Next
+	if fast == slow {
+	    break
+	}
+    }
+
+    //move from start and meet node, find next meet
+    first, second := head, fast
+    for first != second {
+	first = first.Next
+	second = second.Next
+    }
+
+    return first
 }
 
 func main() {
