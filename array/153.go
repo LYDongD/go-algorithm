@@ -11,18 +11,15 @@ func findMin(nums []int) int {
 	return nums[0]
     }
 
-    if len(nums) == 2 {
-	if nums[0] > nums[1] {
-	    return nums[1]
-	}
 
+    start, end := 0, len(nums) - 1
+    if nums[end] > nums[0] {
 	return nums[0]
     }
 
-    start, end := 0, len(nums) - 1
     for start < end {
 	mid := start + (end - start ) / 2
-	if nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1] {
+	if nums[mid] > nums[mid+1] {
 	    return nums[mid+1]
 	}
 
@@ -30,16 +27,11 @@ func findMin(nums []int) int {
 	    return nums[mid]
 	}
 
-	if nums[mid-1] < nums[mid] && nums[mid] < nums[mid+1] {
-	    if nums[mid] > nums[end] {
-		start = mid + 1
-	    }else if nums[mid] < nums[start] {
-		end  = mid - 1
-	    }else {
-		return nums[0]
-	    }
+	if nums[mid] > nums[0] {
+	    start = mid + 1
+	}else {
+	    end  = mid - 1
 	}
-	fmt.Println(start, end, mid)
     }
 
     return nums[0]
