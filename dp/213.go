@@ -15,25 +15,17 @@ func rob(nums []int) int {
 		return max(nums[0], nums[1])
 	}
 
-	bestAmount := 0
+	return max(robRange(nums, 0, len(nums)-2), robRange(nums, 1, len(nums)-1))
+}
+
+func robRange(nums []int, i, j int) int {
 	best := make([]int, len(nums))
-	//dp from 0 -> n - 1
-	best[0] = nums[0]
-	best[1] = max(nums[0], nums[1])
-	for i := 2; i < len(nums)-1; i++ {
-		best[i] = max(best[i-1], best[i-2]+nums[i])
+	best[i] = nums[i]
+	best[i+1] = max(best[i], nums[i+1])
+	for k := i + 2; k <= j; k++ {
+		best[k] = max(best[k-1], best[k-2]+nums[k])
 	}
-	bestAmount = best[len(nums)-2]
-
-	//dp from 1 -> n
-	best[1] = nums[1]
-	best[2] = max(nums[1], nums[2])
-	for i := 3; i < len(nums); i++ {
-		best[i] = max(best[i-1], best[i-2]+nums[i])
-	}
-	bestAmount = max(bestAmount, best[len(nums)-1])
-
-	return bestAmount
+	return best[j]
 }
 
 func max(a, b int) int {
