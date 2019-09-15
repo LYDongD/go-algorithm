@@ -9,18 +9,22 @@ type LRUCache struct {
     capacity int
 }
 
-func ListNode struct {
+type ListNode struct {
+    key int
     val int
     next *ListNode
     prev *ListNode
 }
 
 func Constructor(capacity int) LRUCache {
-    return &LRUCache{
-	dic : make(map[int]*ListNode)
-	head : &ListNode{}
-	tail : &ListNode{}
-	capacity : capacity
+    head, tail := &ListNode{},&ListNode{}
+    head.next = tail
+    tail.prev = head
+    return LRUCache{
+	dic : make(map[int]*ListNode),
+	head : head,
+	tail : tail,
+	capacity : capacity,
     }
 }
 
@@ -48,18 +52,22 @@ func (this *LRUCache) Put(key int, value int)  {
 	delete(this.dic, lastNode.key)
     }
 
-    newNode := &ListNode{val : value}
-    addNode(newNode)
-    dic[key] = newNode
+    newNode := &ListNode{key:key, val : value}
+    this.addToHead(newNode)
+    this.dic[key] = newNode
 }
 
 
 func (this *LRUCache) moveToHead(node *ListNode) {
     this.removeNode(node)
-    node.next = head.next
-    head.next.prev = node
-    head.next=node
-    node.prev = head
+    this.addToHead(node)
+}
+
+func (this *LRUCache) addToHead(node *ListNode) {
+    node.next = this.head.next
+    this.head.next.prev = node
+    this.head.next=node
+    node.prev = this.head
 }
 
 func (this *LRUCache) removeNode(node *ListNode) {
@@ -67,4 +75,9 @@ func (this *LRUCache) removeNode(node *ListNode) {
     node.next.prev = node.prev
     node.next = nil
     node.prev = nil
+}
+
+
+func main() {
+    fmt.Println("hah")
 }
