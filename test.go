@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println("hello cat")
 	for range []int{1, 2, 3} {
 		fmt.Println("hi")
 	}
