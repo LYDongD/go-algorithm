@@ -3,42 +3,50 @@ package main
 import "fmt"
 
 func nthUglyNumber(n int) int {
-    count := 1
-    result := 1
-    a,b,c := 2,3,5
-    aIndex, bIndex, cIndex := 1,1,1
-    for count < n {
-	current := min(a * aIndex, b * bIndex, c * cIndex)
-	if result < current {
-	    result = current
-	    count++
+	if n <= 6 {
+		return n
 	}
-	fmt.Println("count", count, "result:", result)
-	if result == a * aIndex {
-	    aIndex++
-	}else if result == b * bIndex {
-	    bIndex++
-	}else {
-	    cIndex++
-	}
-    }
 
-    return result
+	ugly := make([]int, n)
+	ugly[0] = 1
+	factor1, factor2, factor3 := 2, 3, 5
+	index1, index2, index3 := 0, 0, 0
+	for i := 1; i < n; i++ {
+		num := min(factor1, factor2, factor3)
+		ugly[i] = num
+		if num == factor1 {
+			index1++
+			factor1 = 2 * ugly[index1]
+		}
+
+		if num == factor2 {
+			index2++
+			factor2 = 3 * ugly[index2]
+		}
+
+		if num == factor3 {
+			index3++
+			factor3 = 5 * ugly[index3]
+		}
+	}
+
+	return ugly[n-1]
+
 }
 
-func min(a,b,c int) int {
-    min := a
-    if b < min {
-	min = b
-    }
+func min(a, b, c int) int {
+	minVal := a
+	if b < a {
+		minVal = b
+	}
 
-    if c < min {
-	min = c
-    }
+	if c < minVal {
+		minVal = c
+	}
 
-    return min
+	return minVal
 }
 
 func main() {
-    fmt.Println(nthUglyNumber(11))
+	fmt.Println(nthUglyNumber(10))
 }
