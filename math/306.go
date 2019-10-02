@@ -34,7 +34,7 @@ func isAddictive(leftNumStr string, sum, lastNum, depth int) bool {
 	 }
 
 	///no need to check 02 like num
-	 if tryNum == 0 {
+	 if tryNum == 0 || i * 2 > len(leftNumStr) {
 	    break
 	 }
     }
