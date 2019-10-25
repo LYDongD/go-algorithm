@@ -7,7 +7,8 @@ func coinChange(coins []int, amount int) int {
 		return 0
 	}
 
-	return findCount(make([]int, amount), coins, amount)
+	dp := make([]int, amount)
+	return findCount(dp, coins, amount)
 }
 
 func findCount(dp, coins []int, remain int) int {
@@ -18,7 +19,7 @@ func findCount(dp, coins []int, remain int) int {
 		return 0
 	}
 
-	if dp[remain-1] != 0 {
+	if dp[remain-1] > 0 {
 		return dp[remain-1]
 	}
 
@@ -43,4 +44,5 @@ func main() {
 	//fmt.Println(coinChange([]int{1, 2, 5}, 11))
 	//fmt.Println(coinChange([]int{2}, 3))
 	fmt.Println(coinChange([]int{186, 419, 83, 408}, 6249))
+
 }
