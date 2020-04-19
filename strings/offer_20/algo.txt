@@ -1,0 +1,14 @@
+1. number 
+    | finally -> numCount > 0
+2. "." 
+    | dotCount > 1 -> false
+    | dotIndex == (0 || end) -> false
+    | ## eCount > 0 -> false
+3. "+/-"
+    | index != 0 && prevChar != 'e/E' -> false
+    | "-" && eCount > 0 -> false
+4. "e"
+    | eCount > 1 —> false
+    | index == 0 || index == len(s) -> false
+5. " " -> continue
+6. others -> false
