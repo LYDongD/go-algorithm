@@ -1,0 +1,18 @@
+1 double pointers, one for pattern or target
+2 compare cursor value
+    | normal char
+	| compare char 
+	    | equal -> move forward and compare next (recursively)
+	    | not equal(no target) -> check next char
+		| normal char -> return false
+		| "." -> return false
+		| "*" -> move forwar 2 steps
+	    
+    | "." 
+	| no target -> return false
+	| move forward
+    | "*"
+	| no target -> move forward
+	| use previous to compare 
+	    | equal -> move target 
+	    | not equal -> move pattern
