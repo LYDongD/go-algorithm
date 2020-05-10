@@ -1,0 +1,10 @@
+| find root of B in A
+    |1 not exist -> false
+    |2 find the ele B1 
+        | DFS for B1 and root of B 
+            | compare 
+                | same -> continue untile B is over
+                | diff -> return 
+    |3 try to find another ele = root of B 
+        | DFS again
+
