@@ -34,13 +34,13 @@ func mergeSort(nums []int, start, end int) int {
 
 	//handle left
 	for i := left; i <= mid; i++ {
-		tmp = append(tmp, nums[left])
+		tmp = append(tmp, nums[i])
 		count += end - mid
 	}
 
 	//handle right
 	for i := right; i <= end; i++ {
-		tmp = append(tmp, nums[right])
+		tmp = append(tmp, nums[i])
 	}
 
 	//replace
